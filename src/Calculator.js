@@ -8,7 +8,8 @@ export default class Calculator extends React.Component {
             previous: 11000,
             gas: 0,
             electricity: 0,
-            total: 0
+            totalGas: 0,
+            totalElectricity: 0
         };
     }
 
@@ -18,16 +19,25 @@ export default class Calculator extends React.Component {
     handleElec(event) {
         this.setState({ electricity: event.target.value });
     }
-    totalAmount() {
-        let totalBill;
+    totalAmountGas() {
         let firstHun = 10
+        let totalBill;
         let previous = +this.state.previous;
         let unit = +this.state.gas
         if (unit > previous) {
             let remainder = unit - previous - 100;
             totalBill = (firstHun) + (remainder * 0.2)
         }
-        this.setState({ total: totalBill });
+
+        let unit2 = +this.state.electricity
+        let totalBill2;
+        if (unit2 > previous) {
+            let remainder = unit2 - previous - 100;
+            totalBill2 = (firstHun) + (remainder * 0.2)
+        }
+
+        this.setState({ totalGas: totalBill });
+        this.setState({ totalElectricity: totalBill2 });
     }
 
     render() {
@@ -44,14 +54,14 @@ export default class Calculator extends React.Component {
                         <div><input id='electricity' type='number' placeholder='Enter electricity reading' onChange={(e) => { this.handleElec(e); }}></input></div>
                     </div>
                 </form>
-                <div className='input' onClick={() => this.totalAmount()}>
+                <div className='input' onClick={() => this.totalAmountGas()}>
                     <button >Calculate</button>
                 </div>
                 <div className='input'>
-                    <label>Total gas reading: £{this.state.total}</label>
+                    <label>Total gas cost: £{this.state.totalGas}</label>
                 </div>
                 <div className='input'>
-                    <label >Total electricity reading: £</label>
+                    <label >Total electricity cost: £{this.state.totalElectricity}</label>
                 </div>
             </>
         )
