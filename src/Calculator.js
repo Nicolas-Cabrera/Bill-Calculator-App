@@ -34,6 +34,7 @@ export default class Calculator extends React.Component {
             }
         } else if (unit < previous) {
             totalBill = 0
+            alert('Please enter a value higher than previous reading(11,000)');
         }
 
         let unit2 = +this.state.electricity
