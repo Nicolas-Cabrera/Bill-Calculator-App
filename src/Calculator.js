@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Images/contrast.png'
 
 export default class Calculator extends React.Component {
 
@@ -56,7 +57,8 @@ export default class Calculator extends React.Component {
     render() {
         return (
             <>
-                <h1>Bill Calculator</h1>
+                <h1>Energy Bill Calculator</h1>
+                <div className='logo'><img src={Icon} alt="icon"/></div>
                 <form>
                     <div className='input'>
                         <label>Gas Reading</label>

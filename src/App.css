@@ -1,7 +1,33 @@
 h1 {
+  margin-top: 0;
+  text-align: center;
+}
+.logo {
   text-align: center;
 }
 .input {
   text-align: center;
+  padding: 5px;
   font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
+.layout {
+  background-image: url("./Images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.footer {
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .layout {
+    background-image: url("./Images/bgmobile.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+} 

@@ -4,8 +4,13 @@ import Calculator from './Calculator'
 
 function App() {
   return (
-    <div className="App">
-      <Calculator />
+    <div className="layout">
+      <div className='card'>
+        <div>
+          <Calculator />
+        </div>
+      </div>
+      <h3 className='footer'>A partner you can trust</h3>
     </div>
   );
 }
