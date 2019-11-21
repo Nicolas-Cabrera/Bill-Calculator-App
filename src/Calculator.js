@@ -20,7 +20,6 @@ export default class Calculator extends React.Component {
         this.setState({ electricity: event.target.value });
     }
     totalAmountGas() {
-        let firstHun = 100;
         let totalBill;
         let previous = +this.state.previous;
         let unit = +this.state.gas
@@ -32,14 +31,22 @@ export default class Calculator extends React.Component {
                 remainder = remainder - 100;
                 totalBill = (100 * 0.10) + (remainder * 0.2)
             }
-            //totalBill = (firstHun * 0.10) + (remainder * 0.2)
+        } else if (unit < previous) {
+            totalBill = 0
         }
 
         let unit2 = +this.state.electricity
         let totalBill2;
         if (unit2 > previous) {
-            let remainder = unit2 - previous - 100;
-            totalBill2 = (firstHun * 0.10) + (remainder * 0.2)
+            let remainder = unit2 - previous;
+            if(remainder < 100) {
+                totalBill2 = (remainder * 0.10)
+            } else {
+                remainder = remainder - 100;
+                totalBill2 = (100 * 0.10) + (remainder * 0.2)
+            }
+        } else if (unit < previous) {
+            totalBill2 = 0
         }
 
         this.setState({ totalGas: totalBill });
